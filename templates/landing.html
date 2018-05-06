@@ -15,6 +15,12 @@ body, html {height: 100%}
     background-position: center;
     background-size: cover;
 }
+.another-url-box {
+      padding: 0.01em 2px;  
+}
+.sub-menu {
+  padding: 0em 12px;   
+}
 
 </style>
 <body>
@@ -25,26 +31,15 @@ body, html {height: 100%}
 </div>
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
-  <!--
-  <div class="w3-container w3-row">
-    <div class="w3-col s4">
-      <img src="/w3images/avatar2.png" class="w3-circle w3-margin-right" style="width:46px">
-    </div>
-    <div class="w3-col s8 w3-bar">
-      <span>Welcome, <strong>Mike</strong></span><br>
-      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
-      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
-      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
-    </div>
-  </div>
-
-  -->
     <hr>
 
   <div class="w3-container">
+    <form class="w3-container another-url-box" method="POST" action="send">
+     <input class="w3-input w3-border w3-round-large w3-animate-input" type="text" name="url" placeholder="Try another URL" style="width:100%">
+     </form>
     <h5>Dashboard</h5>
   </div>
-  <div class="w3-bar-block">
+  <div class="w3-bar-block sub-menu">
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
     <a href="/" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Home</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Views</a>
@@ -55,32 +50,33 @@ body, html {height: 100%}
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>  General</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  History</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Settings</a><br><br>
-  </div>
+    
+  </div>  
 </nav>
 
 
 <div class="w3-display-container w3-animate-opacity w3-text-white">
 
   <div class="w3-row">
-    <!--
-    <div class="w3-quarter w3-container" style="height:700px">
-     <h2>w3-quarter</h2>
-    </div> -->
-   <!-- <div id="map" class="w3-threequarter" style="height:700px"></div> -->
-    <div id="map"  style="height:700px"></div>
+    <div id="map"  style="height:600px"></div>
 </div>
 
 
 </div>
 <script>
 function myMap() {
-  var stavanger = new google.maps.LatLng(45.9257,73.1409);
+  /*var stavanger = new google.maps.LatLng(45.9257,73.1409);
   var amsterdam = new google.maps.LatLng(52.395715,4.888916);
   var london = new google.maps.LatLng(51.508742,-0.120850);
    var kochi = new google.maps.LatLng(9.9312,76.2673); 
    var kochi1 = new google.maps.LatLng(8.9312,7.2673); 
-   //var kochi = new google.maps.LatLng(40.9257,73.1409); 
-
+  */ //var kochi = new google.maps.LatLng(40.9257,73.1409); 
+  var stavanger = new google.maps.LatLng(  40.8714,-73.0425);
+  var amsterdam = new google.maps.LatLng(40.6451, -73.945);
+  var london = new google.maps.LatLng(40.7128,-74.0059);
+   var kochi = new google.maps.LatLng(38.9266, -77.3936); 
+   var kochi1 = new google.maps.LatLng(8.5069,76.9569); 
+  
 
   var mapCanvas = document.getElementById("map");
   var mapOptions = {center: amsterdam, zoom: 2};

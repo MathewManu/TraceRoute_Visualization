@@ -33,8 +33,8 @@ def getPositions(url):
 		r = requests.get(ipUrl).json()
 		ipDetails.append(r)
 		
-	#for ip in ipDetails:
-	#	print (ip[u'city'],  ip[u'lon'], ip[u'lat']) 
+	for ip in ipDetails:
+		print (ip[u'city'], ip[u'lat'], ip[u'lon']) 
 
 	return ipDetails	
 
