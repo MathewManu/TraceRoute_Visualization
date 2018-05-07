@@ -12,7 +12,7 @@ def send():
 	if request.method == 'POST':
 		url = request.form['url']
 		allPoints = getPositions(url)
-		return render_template('landing.html', allPoints=json.dumps(allPoints))
+		return render_template('landing.html', allPoints=json.dumps(allPoints), mapType="satelite")
 
 
 def getPositions(url):

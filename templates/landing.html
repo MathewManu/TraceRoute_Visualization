@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>W3.CSS Template</title>
+<title>URL visualizer</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
@@ -16,7 +16,7 @@ body, html {height: 100%}
     background-size: cover;
 }
 .another-url-box {
-      padding: 0.01em 2px;  
+      padding: 0.01em 1px;  
 }
 .sub-menu {
   padding: 0em 12px;   
@@ -42,7 +42,7 @@ body, html {height: 100%}
   <div class="w3-bar-block sub-menu">
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
     <a href="/" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Home</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Views</a>
+    <a href="#Reports" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Reports</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Traffic</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Geo</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Orders</a>
@@ -62,7 +62,27 @@ body, html {height: 100%}
 </div>
 
 
-</div>
+ </div>
+ <!-- Designers -->
+  <div class="w3-container" id="Reports" style="padding-left:310px;margin-top:75px;">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Designers.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>The best team in the world.</p>
+    <p>We are lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor
+    incididunt ut labore et quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    We are lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor
+    incididunt ut labore et quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    We are lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor
+    incididunt ut labore et quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </p>
+    <p><b>Our designers are thoughtfully chosen</b>:</p>
+  </div>
+
+
+  
 <script>
 function myMap() {
   /*var stavanger = new google.maps.LatLng(45.9257,73.1409);
@@ -71,15 +91,22 @@ function myMap() {
    var kochi = new google.maps.LatLng(9.9312,76.2673); 
    var kochi1 = new google.maps.LatLng(8.9312,7.2673); 
   */ //var kochi = new google.maps.LatLng(40.9257,73.1409); 
-  var stavanger = new google.maps.LatLng(  40.8714,-73.0425);
-  var amsterdam = new google.maps.LatLng(40.6451, -73.945);
-  var london = new google.maps.LatLng(40.7128,-74.0059);
+   var stavanger = new google.maps.LatLng(  40.8714,-73.0425);
+   var amsterdam = new google.maps.LatLng(40.6451, -73.945);
+   var london = new google.maps.LatLng(40.7128,-74.0059);
    var kochi = new google.maps.LatLng(38.9266, -77.3936); 
    var kochi1 = new google.maps.LatLng(8.5069,76.9569); 
-  
+
+  var type = '{{mapType}}'  
 
   var mapCanvas = document.getElementById("map");
-  var mapOptions = {center: amsterdam, zoom: 2};
+  if (type === "satelite") {
+     var mapOptions = {center: amsterdam, zoom: 2, mapTypeId:google.maps.MapTypeId.ROADMAP};
+  }
+  else  {
+    var mapOptions = {center: amsterdam, zoom: 2, mapTypeId:google.maps.MapTypeId.ROADMAP};
+  }
+
   var map = new google.maps.Map(mapCanvas,mapOptions);
 
   var flightPath = new google.maps.Polyline({
