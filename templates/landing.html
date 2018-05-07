@@ -82,8 +82,57 @@ body, html {height: 100%}
   </div>
 
 
-  
+
 <script>
+
+  function mapp() {
+     var amsterdam = new google.maps.LatLng(40.6451, -73.945);
+     var mapCanvas = document.getElementById("map");
+     var mapOptions = {center: amsterdam, zoom: 2, mapTypeId:google.maps.MapTypeId.ROADMAP};
+     var points = JSON.parse('{{ allPoints|safe }}');  
+     var marker;  
+     
+     var path;                                                       
+     var map = new google.maps.Map(mapCanvas,mapOptions);
+     var lineSymbol = {
+          path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+          scale: 3,
+          strokeColor: '#393'
+        };
+     var poly = new google.maps.Polyline({
+                map: map,
+                path: [],
+                icons: [{
+                    icon: lineSymbol,
+                   offset: '100%'
+                 }],
+                strokeColor: "#0000FF",
+                strokeOpacity: 0.8,
+                strokeWeight: 2
+              });
+      for (var i = 0; i < points.length; i++) {                               
+          console.log(points[i]);
+          marker = new google.maps.Marker({                                   
+            position: new google.maps.LatLng(points[i].lat, points[i].lon),   
+            map: map                                                          
+          });   
+
+          path = poly.getPath();
+          path.push(new google.maps.LatLng(points[i].lat, points[i].lon));
+          poly.setPath(path);
+      } 
+     // animateCircle(poly);
+  }
+   function animateCircle(line) {
+          var count = 10000;
+          window.setInterval(function() {
+            count = (count + 1) % 200;
+
+            var icons = line.get('icons');
+            icons[0].offset = (count / 2) + '%';
+            line.set('icons', icons);
+        }, 30);
+      }
 function myMap() {
   /*var stavanger = new google.maps.LatLng(45.9257,73.1409);
   var amsterdam = new google.maps.LatLng(52.395715,4.888916);
@@ -128,8 +177,11 @@ function myMap() {
     marker4.setMap(map);
 }
 </script>
+<script async defer
+ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgUvDuVwvTRZO5ei6p5JewLhY4pJz_vYQ&callback=mapp">
+</script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgUvDuVwvTRZO5ei6p5JewLhY4pJz_vYQ&callback=myMap"></script>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgUvDuVwvTRZO5ei6p5JewLhY4pJz_vYQ&callback=mapp"></script> -->
 
 <script>
 // Get the Sidebar
