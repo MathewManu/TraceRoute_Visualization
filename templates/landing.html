@@ -22,12 +22,14 @@ body, html {height: 100%}
   padding: 0em 12px;   
 }
 
+
+
 </style>
 <body>
 <!-- Top container -->
 <div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
   <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button> 
-  <span class="w3-bar-item w3-right">Logo</span>
+  <span class="w3-bar-item w3-right">TraceURL</span>
 </div>
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
@@ -57,7 +59,7 @@ body, html {height: 100%}
 
 <div class="w3-display-container w3-animate-opacity w3-text-white">
 
-  <div class="w3-row">
+  <div class="w3-row map-div">
     <div id="map"  style="height:600px"></div>
 </div>
 
@@ -86,18 +88,264 @@ body, html {height: 100%}
 <script>
 
   function mapp() {
-     var amsterdam = new google.maps.LatLng(40.6451, -73.945);
-     var mapCanvas = document.getElementById("map");
-     var mapOptions = {center: amsterdam, zoom: 2, mapTypeId:google.maps.MapTypeId.ROADMAP};
+  
      var points = JSON.parse('{{ allPoints|safe }}');  
      var marker;  
      
-     var path;                                                       
+     var path; 
+      var styledMapType = new google.maps.StyledMapType(
+      [
+        {
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "color": "#1d2c4d"
+            }
+          ]
+        },
+        {
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "color": "#8ec3b9"
+            }
+          ]
+        },
+        {
+          "elementType": "labels.text.stroke",
+          "stylers": [
+            {
+              "color": "#1a3646"
+            }
+          ]
+        },
+        {
+          "featureType": "administrative.country",
+          "elementType": "geometry.stroke",
+          "stylers": [
+            {
+              "color": "#4b6878"
+            }
+          ]
+        },
+        {
+          "featureType": "administrative.land_parcel",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "color": "#64779e"
+            }
+          ]
+        },
+        {
+          "featureType": "administrative.province",
+          "elementType": "geometry.stroke",
+          "stylers": [
+            {
+              "color": "#4b6878"
+            }
+          ]
+        },
+        {
+          "featureType": "landscape.man_made",
+          "elementType": "geometry.stroke",
+          "stylers": [
+            {
+              "color": "#334e87"
+            }
+          ]
+        },
+        {
+          "featureType": "landscape.natural",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "color": "#023e58"
+            }
+          ]
+        },
+        {
+          "featureType": "poi",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "color": "#283d6a"
+            }
+          ]
+        },
+        {
+          "featureType": "poi",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "color": "#6f9ba5"
+            }
+          ]
+        },
+        {
+          "featureType": "poi",
+          "elementType": "labels.text.stroke",
+          "stylers": [
+            {
+              "color": "#1d2c4d"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.park",
+          "elementType": "geometry.fill",
+          "stylers": [
+            {
+              "color": "#023e58"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.park",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "color": "#3C7680"
+            }
+          ]
+        },
+        {
+          "featureType": "road",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "color": "#304a7d"
+            }
+          ]
+        },
+        {
+          "featureType": "road",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "color": "#98a5be"
+            }
+          ]
+        },
+        {
+          "featureType": "road",
+          "elementType": "labels.text.stroke",
+          "stylers": [
+            {
+              "color": "#1d2c4d"
+            }
+          ]
+        },
+        {
+          "featureType": "road.highway",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "color": "#2c6675"
+            }
+          ]
+        },
+        {
+          "featureType": "road.highway",
+          "elementType": "geometry.stroke",
+          "stylers": [
+            {
+              "color": "#255763"
+            }
+          ]
+        },
+        {
+          "featureType": "road.highway",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "color": "#b0d5ce"
+            }
+          ]
+        },
+        {
+          "featureType": "road.highway",
+          "elementType": "labels.text.stroke",
+          "stylers": [
+            {
+              "color": "#023e58"
+            }
+          ]
+        },
+        {
+          "featureType": "transit",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "color": "#98a5be"
+            }
+          ]
+        },
+        {
+          "featureType": "transit",
+          "elementType": "labels.text.stroke",
+          "stylers": [
+            {
+              "color": "#1d2c4d"
+            }
+          ]
+        },
+        {
+          "featureType": "transit.line",
+          "elementType": "geometry.fill",
+          "stylers": [
+            {
+              "color": "#283d6a"
+            }
+          ]
+        },
+        {
+          "featureType": "transit.station",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "color": "#3a4762"
+            }
+          ]
+        },
+        {
+          "featureType": "water",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "color": "#0e1626"
+            }
+          ]
+        },
+        {
+          "featureType": "water",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "color": "#4e6d70"
+            }
+          ]
+        }
+      ],
+      {name: 'Styled Map'});
+
+     var amsterdam = new google.maps.LatLng(40.6451, -73.945);
+     var mapCanvas = document.getElementById("map");
+     var mapOptions = {center: amsterdam, zoom: 2, 
+        mapTypeControlOptions: {
+            mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain',
+                    'styled_map']
+                  }};
+
+      //mapTypeId:google.maps.MapTypeId.ROADMAP};
+
      var map = new google.maps.Map(mapCanvas,mapOptions);
+     map.mapTypes.set('styled_map', styledMapType);
+        map.setMapTypeId('styled_map');
      var lineSymbol = {
-          path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
-          scale: 3,
-          strokeColor: '#393'
+          path: google.maps.SymbolPath.CIRCLE,
+          scale: 5,
+          strokeColor: '#ffcc00'
         };
      var poly = new google.maps.Polyline({
                 map: map,
@@ -106,7 +354,7 @@ body, html {height: 100%}
                     icon: lineSymbol,
                    offset: '100%'
                  }],
-                strokeColor: "#0000FF",
+                strokeColor: "#ffff99",
                 strokeOpacity: 0.8,
                 strokeWeight: 2
               });
@@ -114,6 +362,7 @@ body, html {height: 100%}
           console.log(points[i]);
           marker = new google.maps.Marker({                                   
             position: new google.maps.LatLng(points[i].lat, points[i].lon),   
+            animation: google.maps.Animation.DROP,
             map: map                                                          
           });   
 
@@ -121,7 +370,7 @@ body, html {height: 100%}
           path.push(new google.maps.LatLng(points[i].lat, points[i].lon));
           poly.setPath(path);
       } 
-     // animateCircle(poly);
+      animateCircle(poly);
   }
    function animateCircle(line) {
           var count = 10000;
@@ -131,7 +380,7 @@ body, html {height: 100%}
             var icons = line.get('icons');
             icons[0].offset = (count / 2) + '%';
             line.set('icons', icons);
-        }, 30);
+        }, 15);
       }
 function myMap() {
   /*var stavanger = new google.maps.LatLng(45.9257,73.1409);
