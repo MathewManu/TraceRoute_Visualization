@@ -65,23 +65,69 @@ body, html {height: 100%}
 
 
  </div>
- <!-- Designers -->
-  <div class="w3-container" id="Reports" style="padding-left:310px;margin-top:75px;">
-    <h1 class="w3-xxxlarge w3-text-red"><b>Designers.</b></h1>
+
+    
+      <div class="w3-container" id="Reports" style="padding-left:310px;padding-bottom:175px;margin-top:25px;">
+         <h1 class="w3-xxxlarge w3-text-red"><b>Designers.</b></h1>
     <hr style="width:50px;border:5px solid red" class="w3-round">
-    <p>The best team in the world.</p>
-    <p>We are lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    We are lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    We are lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    </p>
-    <p><b>Our designers are thoughtfully chosen</b>:</p>
-  </div>
+      <h2>Striped Table</h2>
+      <p>The w3-striped class adds zebra-stripes to a table:</p>
+      <p> {{allPoints|safe }} </p>
+
+        <p id="demo"></p>
+        <div id="tableData"></div>
+
+
+
+
+      <script type="text/javascript">
+            var json_arr = {{ allPoints|safe }};
+            var tableData = '<table>';
+            tableData += '<th>' + "Serial no." + '</th>';
+            tableData += '<th>' + "Name" + '</th>';
+            tableData += '<th>' + "Age" + '</th>';
+            for (var i=0;i<json_arr.length;i++){
+                //alert("Hello world!!");
+                var obj = json_arr[i];
+                //alert(obj.id);
+                tableData += '<tr>';
+                tableData += '<td>' + obj.lat + '</td>';
+                tableData += '<td>' + obj.lon + '</td>';
+                tableData += '<td>' + obj.age + '</td>';
+                tableData += '</tr>';
+            }
+            tableData += '</table>';
+            document.getElementById("demo").innerHTML = tableData;
+            $('#tableData').html(tableData);
+        </script>
+
+
+      <table class="w3-table w3-striped">
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Points</th>
+        </tr>
+        <tr>
+          <td>Jill</td>
+          <td>Smith</td>
+          <td>50</td>
+        </tr>
+        <tr>
+          <td>Eve</td>
+          <td>Jackson</td>
+          <td>94</td>
+        </tr>
+        <tr>
+          <td>Adam</td>
+          <td>Johnson</td>
+          <td>67</td>
+        </tr>
+       
+
+
+      </table>
+    </div>
 
 
 
@@ -334,7 +380,7 @@ body, html {height: 100%}
      var mapOptions = {center: amsterdam, zoom: 2, 
         mapTypeControlOptions: {
             mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain',
-                    'styled_map']
+                    'styled_map'] 
                   }};
 
       //mapTypeId:google.maps.MapTypeId.ROADMAP};
