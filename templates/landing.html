@@ -32,7 +32,7 @@ body, html {height: 100%}
   <span class="w3-bar-item w3-right">TraceURL</span>
 </div>
 <!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:220px;" id="mySidebar"><br>
     <hr>
 
   <div class="w3-container">
@@ -86,7 +86,8 @@ body, html {height: 100%}
 
 
 <script>
-
+  var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  var labelIndex = 0;
   function mapp() {
   
      var points = JSON.parse('{{ allPoints|safe }}');  
@@ -343,10 +344,16 @@ body, html {height: 100%}
      map.mapTypes.set('styled_map', styledMapType);
         map.setMapTypeId('styled_map');
      var lineSymbol = {
-          path: google.maps.SymbolPath.CIRCLE,
-          scale: 5,
-          strokeColor: '#ffcc00'
-        };
+          path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+          scale: 2,
+          strokeColor: '#ffffff'
+     };
+     var marker_icon = {
+        url: "static/img/marker6.png",
+        scaledSize: new google.maps.Size(40, 40),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(20, 40)
+     };
      var poly = new google.maps.Polyline({
                 map: map,
                 path: [],
@@ -354,7 +361,7 @@ body, html {height: 100%}
                     icon: lineSymbol,
                    offset: '100%'
                  }],
-                strokeColor: "#ffff99",
+                strokeColor: "#34bdef",
                 strokeOpacity: 0.8,
                 strokeWeight: 2
               });
@@ -363,6 +370,8 @@ body, html {height: 100%}
           marker = new google.maps.Marker({                                   
             position: new google.maps.LatLng(points[i].lat, points[i].lon),   
             animation: google.maps.Animation.DROP,
+            icon: marker_icon,
+            //label: (i >= 1 && i <= points.length - 2) ? '' : ((i == 0) ? 'A' : 'Z'),
             map: map                                                          
           });   
 
