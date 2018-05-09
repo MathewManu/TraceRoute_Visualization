@@ -41,12 +41,16 @@ def traceroute(dest_addr, max_hops=30, timeout=0.2):
             tx.close()
 
         if curr_addr is not None:
+        #if type(curr_addr) is not NoneType:
+            print "-----"
             print curr_addr
             ips.append(curr_addr)
+            #ips.extend(curr_addr)
 
         if curr_addr == dest_addr:
             return ips
 
+    return ips
 
 def getPositions(url):
 
@@ -54,10 +58,14 @@ def getPositions(url):
 
 	ips = traceroute(socket.gethostbyname(url))
 
-	for ip in ips:
+        #for ip in ips:
+        #    print ip
+	for ip in ips or []:
 		ipUrl = 'http://ip-api.com/json/' + ip 
 		r = requests.get(ipUrl).json()
-		ipDetails.append(r)
+                #print r
+                if r[u'status'] == "success":
+		    ipDetails.append(r)
 		
 	'''for ip in ipDetails:
 		print (ip[u'city'], ip[u'lat'], ip[u'lon']) 
