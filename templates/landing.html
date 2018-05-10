@@ -20,24 +20,32 @@ body, html {height: 100%}
       padding: 0.01em 1px;  
 }
 .sub-menu {
-  padding: 0em 12px;   
+  padding: 12px;   
+}
+.title {
+    
+     display: table;
+    margin-left: auto;
+    margin-right: auto;
 }
 </style>
 <body>
 <!-- Top container -->
 <div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
-  <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button> 
-  <span class="w3-bar-item w3-right">TraceURL</span>
+  <!--<button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>  -->
+  <span class="title w3-right w3-bar-item  w3-wide">TraceRoute Visualization Tool</span>
+  <!--<span class="w3-bar-item w3-right">TraceURL</span> -->
 </div>
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:240px;" id="mySidebar"><br>
-    <hr>
+    
 
-  <div class="w3-container">
+  <div class="w3-container" style="padding-bottom: 15px;padding-top: 25px">
+     <h5 class = "w3-wide w3-center">Try another URL</h5>
     <form class="w3-container another-url-box" method="POST" action="send">
-     <input class="w3-input w3-border w3-round-large w3-animate-input" type="text" name="url" placeholder="Try another URL" style="width:100%">
+     <input class="w3-input w3-border w3-round-large w3-animate-input" type="text" name="url" placeholder={{ url }} style="width:100%">
      </form>
-    <h5>Dashboard</h5>
+ <!--   <h5>Dashboard</h5> -->
   </div>
   <div class="w3-bar-block sub-menu">
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
@@ -110,9 +118,13 @@ body, html {height: 100%}
 <div class="w3-container" id="reports" style="padding-left:240px;padding-bottom:175px;padding-top:25px;margin-top:25px;">
    <!--  <h1 class="w3-xxxlarge w3-2017-navy-peony"><b>Route</b></h1> -->
    <h1 class="w3-xxxlarge w3-text-"><b>Reports</b></h1> 
+
+   <div class="w3-panel">
+    
+  
    <p> tracepath.world is deployed on Amazon AWS (Seatle, US). After tracing a few popular websites (based on alexa.com) from different continents, it was observed that the website contents were not served from the respective countries/continents in all cases. This is due to the fact that, CDNs use the location of the DNS to redirect the request to the closest server. In our experiments the contents for most of the websites were severved from the US.
   Following tables shows popular websites from different countries and where the content was served from.</p>
-
+  </div>
    <h2 class="w3-text-blue"> Australia</h2>
     <table class="w3-table w3-hoverable">
     <thead>

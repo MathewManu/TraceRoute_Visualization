@@ -15,7 +15,7 @@ def send():
     if request.method == 'POST':
         url = request.form['url']
         allPoints = getPositions(url)
-        return render_template('landing.html', allPoints=json.dumps(allPoints), mapType="satelite")
+        return render_template('landing.html', allPoints=json.dumps(allPoints), url=url)
 
 def traceroute(dest_addr, max_hops=30, timeout=0.2):
     ips = []
