@@ -119,11 +119,11 @@ body, html {height: 100%}
 <script>
   var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   var labelIndex = 0;
+
   function mapp() {
   
      var points = JSON.parse('{{ allPoints|safe }}');  
      var marker;  
-     
      var path; 
       var styledMapType = new google.maps.StyledMapType(
       [
@@ -360,7 +360,6 @@ body, html {height: 100%}
         }
       ],
       {name: 'Styled Map'});
-     var markers = [];
      var amsterdam = new google.maps.LatLng(40.6451, -73.945);
      var mapCanvas = document.getElementById("map");
      var mapOptions = {center: amsterdam, zoom: 2, 
@@ -394,41 +393,35 @@ body, html {height: 100%}
                 strokeOpacity: 0.8,
                 strokeWeight: 2
               });
-      //clearMarkers();
       for (var i = 0; i < points.length; i++) {                               
-        /*
-        */
           console.log(points[i]);
           marker = new google.maps.Marker({                                   
             position: new google.maps.LatLng(points[i].lat, points[i].lon),   
             animation: google.maps.Animation.DROP,
             icon: marker_icon,
-            //label: (i >= 1 && i <= points.length - 2) ? '' : ((i == 0) ? 'A' : 'Z'),
+            info: points[i].city,
             map: map                                                          
           });   
-          //addMarkerWithTimeout(new google.maps.LatLng(points[i].lat, points[i].lon), 10);
+
+          attachSecretMessage(marker, '<p style="color:black;">' + points[i].city + ", " + points[i].countryCode + '</p>');
+
           path = poly.getPath();
           path.push(new google.maps.LatLng(points[i].lat, points[i].lon));
           poly.setPath(path);
       } 
       animateCircle(poly);
       }
-function addMarkerWithTimeout(position, timeout) {
-  window.setTimeout(function() {
-      markers.push(new google.maps.Marker({
-        position: position,
-        map: map,
-        icon: marker_icon,
-        animation: google.maps.Animation.DROP
-      }));
-  }, timeout);
+
+function attachSecretMessage(marker, secretMessage) {
+  var infowindow = new google.maps.InfoWindow({
+    content: secretMessage
+  });
+
+  marker.addListener('click', function() {
+    infowindow.open(marker.get('map'), marker);
+  });
 }
-function clearMarkers() {
-  for (var i = 0; i < markers.length; i++) {
-    markers[i].setMap(null);
-  }
-  markers = [];
-}
+
 function animateCircle(line) {
           var count = 10000;
           window.setInterval(function() {
@@ -438,45 +431,7 @@ function animateCircle(line) {
             line.set('icons', icons);
         }, 15);
       }
-function myMap() {
-  /*var stavanger = new google.maps.LatLng(45.9257,73.1409);
-  var amsterdam = new google.maps.LatLng(52.395715,4.888916);
-  var london = new google.maps.LatLng(51.508742,-0.120850);
-   var kochi = new google.maps.LatLng(9.9312,76.2673); 
-   var kochi1 = new google.maps.LatLng(8.9312,7.2673); 
-  */ //var kochi = new google.maps.LatLng(40.9257,73.1409); 
-   var stavanger = new google.maps.LatLng(  40.8714,-73.0425);
-   var amsterdam = new google.maps.LatLng(40.6451, -73.945);
-   var london = new google.maps.LatLng(40.7128,-74.0059);
-   var kochi = new google.maps.LatLng(38.9266, -77.3936); 
-   var kochi1 = new google.maps.LatLng(8.5069,76.9569); 
-  var type = '{{mapType}}'  
-  var mapCanvas = document.getElementById("map");
-  if (type === "satelite") {
-     var mapOptions = {center: amsterdam, zoom: 2, mapTypeId:google.maps.MapTypeId.ROADMAP};
-  }
-  else  {
-    var mapOptions = {center: amsterdam, zoom: 2, mapTypeId:google.maps.MapTypeId.ROADMAP};
-  }
-  var map = new google.maps.Map(mapCanvas,mapOptions);
-  var flightPath = new google.maps.Polyline({
-    path: [stavanger, amsterdam, london,kochi,kochi1],
-    strokeColor: "#0000FF",
-    strokeOpacity: 0.8,
-    strokeWeight: 2
-  });
-  flightPath.setMap(map);
-   var marker = new google.maps.Marker({position:kochi});
-   var marker4 = new google.maps.Marker({position:kochi1});
-    var marker1 = new google.maps.Marker({position:london});
-     var marker2 = new google.maps.Marker({position:amsterdam});
-     var marker3 = new google.maps.Marker({position:stavanger});
-    marker.setMap(map);
-    marker1.setMap(map);
-    marker2.setMap(map);
-    marker3.setMap(map);
-    marker4.setMap(map);
-}
+
 </script>
 <script async defer
  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgUvDuVwvTRZO5ei6p5JewLhY4pJz_vYQ&callback=mapp">
