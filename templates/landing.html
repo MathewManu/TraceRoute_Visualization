@@ -28,6 +28,10 @@ body, html {height: 100%}
     margin-left: auto;
     margin-right: auto;
 }
+.inlineTable {
+    display: inline-block;
+}
+
 </style>
 <body>
 <!-- Top container -->
@@ -115,256 +119,228 @@ body, html {height: 100%}
 <!-- <p> {{allPoints|safe }} </p> -->
 </div>
 
-<div class="w3-container" id="reports" style="padding-left:240px;padding-bottom:175px;padding-top:25px;margin-top:25px;">
+<div class="w3-container" id="reports" style="padding-left:240px;padding-bottom:75px;padding-top:25px;margin-top:25px;">
    <!--  <h1 class="w3-xxxlarge w3-2017-navy-peony"><b>Route</b></h1> -->
    <h1 class="w3-xxxlarge w3-text-"><b>Reports</b></h1> 
 
    <div class="w3-panel">
     
   
-   <p> tracepath.world is deployed on Amazon AWS (Seatle, US). After tracing a few popular websites (based on alexa.com) from different continents, it was observed that the website contents were not served from the respective countries/continents in all cases. This is due to the fact that, CDNs use the location of the DNS to redirect the request to the closest server. In our experiments the contents for most of the websites were severved from the US.
+   <p> <span style="color: blue">tracepath.world </span> is deployed on Amazon AWS (Seatle, US). After tracing a few popular websites (based on alexa.com) from different continents, it was observed that the website contents were not served from the respective countries/continents in all cases. This is due to the fact that, CDNs use the location of the DNS to redirect the request to the closest server. In our experiments the contents for most of the websites were severved from the US.
   Following tables shows popular websites from different countries and where the content was served from.</p>
   </div>
-   <h2 class="w3-text-blue"> Australia</h2>
-    <table class="w3-table w3-hoverable">
+
+   <h2 class="w3-text-blue"> Top 10 Alexa sites</h2>
+     <table class="w3-table w3-hoverable" style="float: left; border-collapse:collapse; ">
     <thead>
       <tr class="w3-light-grey">
         <th>Website</th>
-        <th>Content Served From</th>
+        <th>Server - USA</th>
+        <th>Server - India</th>
+        <th>
       </tr>
     </thead>
     <tr>
       <td>Commbank.com.au</td>
+      <td>Smith</td>
       <td>Smith</td>
       
     </tr>
     <tr>
       <td>News.com.au</td>
       <td>Jackson</td>
-      
+      <td>Smith</td>
     </tr>
     <tr>
       <td>www.cricketaustralia.com.au</td>
       <td>Johnson</td>
-      
+      <td>Smith</td>
     </tr>
     <tr>
       <td>Unsw.edu.au</td>
       <td>Nilson</td>
-      
+      <td>Smith</td>
     </tr>
     <tr>
       <td>Abc.net.au</td>
       <td>Nilson</td>
-      
+      <td>Smith</td>
     </tr>
     <tr>
       <td>Bom.gov.au</td>
       <td>Nilson</td>
-      
+      <td>Smith</td>
     </tr>
     <tr>
       <td>Google.com.au</td>
       <td>Nilson</td>
+      <td>Smith</td>
+    </tr>
+  </table>
+  
+   <h2 class="w3-text-blue"> Australia</h2>
+   
+
+    <table class="w3-table w3-hoverable" style="float: left; border-collapse:collapse; ">
+    <thead>
+      <tr class="w3-light-grey">
+        <th>Website</th>
+        <th>Server - USA</th>
+        <th>Server - India</th>
+        <th>
+      </tr>
+    </thead>
+    <tr>
+      <td>Commbank.com.au</td>
+      <td>Smith</td>
+      <td>Smith</td>
       
     </tr>
-
+    <tr>
+      <td>News.com.au</td>
+      <td>Jackson</td>
+      <td>Smith</td>
+    </tr>
+    <tr>
+      <td>www.cricketaustralia.com.au</td>
+      <td>Johnson</td>
+      <td>Smith</td>
+    </tr>
+    <tr>
+      <td>Unsw.edu.au</td>
+      <td>Nilson</td>
+      <td>Smith</td>
+    </tr>
+    <tr>
+      <td>Abc.net.au</td>
+      <td>Nilson</td>
+      <td>Smith</td>
+    </tr>
+    <tr>
+      <td>Bom.gov.au</td>
+      <td>Nilson</td>
+      <td>Smith</td>
+    </tr>
+    <tr>
+      <td>Google.com.au</td>
+      <td>Nilson</td>
+      <td>Smith</td>
+    </tr>
   </table>
+
 
    <h2 class="w3-text-blue"> Asia</h2>
-    <table class="w3-table w3-hoverable">
+    <table class="w3-table w3-hoverable" style="float: left; border-collapse:collapse; ">
     <thead>
       <tr class="w3-light-grey">
         <th>Website</th>
-        <th>Content Served From</th>
+        <th>Server - USA</th>
+        <th>Server - India</th>
+        <th>
       </tr>
     </thead>
     <tr>
       <td>Commbank.com.au</td>
+      <td>Smith</td>
       <td>Smith</td>
       
     </tr>
     <tr>
       <td>News.com.au</td>
       <td>Jackson</td>
-      
-    </tr>
-    <tr>
-      <td>www.cricketaustralia.com.au</td>
-      <td>Johnson</td>
-      
-    </tr>
-    <tr>
-      <td>Unsw.edu.au</td>
-      <td>Nilson</td>
-      
-    </tr>
-    <tr>
-      <td>Abc.net.au</td>
-      <td>Nilson</td>
-      
-    </tr>
-    <tr>
-      <td>Bom.gov.au</td>
-      <td>Nilson</td>
-      
-    </tr>
-    <tr>
-      <td>Google.com.au</td>
-      <td>Nilson</td>
-      
-    </tr>
-
-  </table>
-   <h2 class="w3-text-blue"> Africa</h2>
-    <table class="w3-table w3-hoverable">
-    <thead>
-      <tr class="w3-light-grey">
-        <th>Website</th>
-        <th>Content Served From</th>
-      </tr>
-    </thead>
-    <tr>
-      <td>Commbank.com.au</td>
       <td>Smith</td>
-      
-    </tr>
-    <tr>
-      <td>News.com.au</td>
-      <td>Jackson</td>
-      
     </tr>
     <tr>
       <td>www.cricketaustralia.com.au</td>
       <td>Johnson</td>
-      
-    </tr>
-    <tr>
-      <td>Unsw.edu.au</td>
-      <td>Nilson</td>
-      
-    </tr>
-    <tr>
-      <td>Abc.net.au</td>
-      <td>Nilson</td>
-      
-    </tr>
-    <tr>
-      <td>Bom.gov.au</td>
-      <td>Nilson</td>
-      
-    </tr>
-    <tr>
-      <td>Google.com.au</td>
-      <td>Nilson</td>
-      
-    </tr>
-
-  </table>
-   <h2 class="w3-text-blue"> North America</h2>
-    <table class="w3-table w3-hoverable">
-    <thead>
-      <tr class="w3-light-grey">
-        <th>Website</th>
-        <th>Content Served From</th>
-      </tr>
-    </thead>
-    <tr>
-      <td>Commbank.com.au</td>
       <td>Smith</td>
-      
-    </tr>
-    <tr>
-      <td>News.com.au</td>
-      <td>Jackson</td>
-      
-    </tr>
-    <tr>
-      <td>www.cricketaustralia.com.au</td>
-      <td>Johnson</td>
-      
     </tr>
     <tr>
       <td>Unsw.edu.au</td>
       <td>Nilson</td>
-      
+      <td>Smith</td>
     </tr>
     <tr>
       <td>Abc.net.au</td>
       <td>Nilson</td>
-      
+      <td>Smith</td>
     </tr>
     <tr>
       <td>Bom.gov.au</td>
       <td>Nilson</td>
-      
+      <td>Smith</td>
     </tr>
     <tr>
       <td>Google.com.au</td>
       <td>Nilson</td>
-      
+      <td>Smith</td>
     </tr>
-
   </table>
+
+   
 
    <h2 class="w3-text-blue"> Europe </h2>
-    <table class="w3-table w3-hoverable">
+    <table class="w3-table w3-hoverable" style="float: left; border-collapse:collapse; ">
     <thead>
       <tr class="w3-light-grey">
         <th>Website</th>
-        <th>Content Served From</th>
+        <th>Server - USA</th>
+        <th>Server - India</th>
+        <th>
       </tr>
     </thead>
     <tr>
       <td>Commbank.com.au</td>
+      <td>Smith</td>
       <td>Smith</td>
       
     </tr>
     <tr>
       <td>News.com.au</td>
       <td>Jackson</td>
-      
+      <td>Smith</td>
     </tr>
     <tr>
       <td>www.cricketaustralia.com.au</td>
       <td>Johnson</td>
-      
+      <td>Smith</td>
     </tr>
     <tr>
       <td>Unsw.edu.au</td>
       <td>Nilson</td>
-      
+      <td>Smith</td>
     </tr>
     <tr>
       <td>Abc.net.au</td>
       <td>Nilson</td>
-      
+      <td>Smith</td>
     </tr>
     <tr>
       <td>Bom.gov.au</td>
       <td>Nilson</td>
-      
+      <td>Smith</td>
     </tr>
     <tr>
       <td>Google.com.au</td>
       <td>Nilson</td>
-      
+      <td>Smith</td>
     </tr>
-
   </table>
+  </div>
+ 
 
-</div>   
 
-
-  <div id="about" class="w3-container" style="padding-left:240px;padding-bottom:175px;padding-top:25px;margin-top:25px;">
+  <div id="about" class="w3-container" style="padding-left:240px;padding-bottom:75px;padding-top:25px;margin-top:25px;">
     <h1 class="w3-xxxlarge w3-text-"><b>About</b></h1> 
 
-    <p>Just me, myself and I, exploring the universe of unknownment. I have a heart of love and an interest of lorem ipsum and mauris neque quam blog. I want to share my world with you. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+    <p>This is a visual traceroute application that displays the path taken by the Internet packets across the IP networks to reach a given destination. However, the traceroute result may be influenced by firewalls, Network Address Translation and IP tunnels. <br>This application is deployed on Amazon AWS located in the US, So each request would originate from the US. This tool uses third-party publicly accessible IP geo-location services, it could be possible that the geo-location data in those services is incorrect and thereof the visual representation of traceroute will be incorrect as well.<br>
+      
+    </p>
   </div>
  <!-- Footer -->
-  <footer class="w3-container w3-padding-16 w3-light-grey" style="padding-left:240px;>
+  <footer class="w3-container w3-padding-16 w3-light-grey w3-center w3-large" style="padding-left:240px;>
     <h4>FOOTER</h4>
-    <p class="w3-text-grey">For educational purposes only</p>
+    <p class="w3-text-grey"><span style="color: grey;font-size: 14px;">For educational purposes only. This project is done as part of CSE 534 Fundamentals of Computer Networks course.</span></p>
   </footer>
 
 
